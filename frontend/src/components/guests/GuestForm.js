@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button, Card, ToggleButton } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import { BsArrowLeft, BsCheckLg } from 'react-icons/bs';
+import { BsArrowLeft, BsCheckLg, BsKey, BsCreditCard } from 'react-icons/bs';
 
 const GuestForm = () => {
   const navigate = useNavigate();
@@ -169,35 +169,53 @@ const GuestForm = () => {
                 </Form.Group>
 
                 <h5 className="mt-4 mb-3">Status</h5>
-                <div className="d-flex">
-                  <Form.Group className="mb-3 me-4">
-                    <div className="d-flex align-items-center">
-                      <Form.Check
-                        type="switch"
-                        id="key-returned"
-                        name="keyReturned"
-                        checked={formData.keyReturned}
-                        onChange={handleChange}
-                        className="ios-switch me-2"
-                      />
-                      <Form.Label className="mb-0">Key Returned</Form.Label>
-                    </div>
-                  </Form.Group>
-
-                  <Form.Group className="mb-3">
-                    <div className="d-flex align-items-center">
-                      <Form.Check
-                        type="switch"
-                        id="payment-completed"
-                        name="paymentCompleted"
-                        checked={formData.paymentCompleted}
-                        onChange={handleChange}
-                        className="ios-switch me-2"
-                      />
-                      <Form.Label className="mb-0">Payment Completed</Form.Label>
-                    </div>
-                  </Form.Group>
-                </div>
+                <Card className="border-0 bg-light mb-3">
+                  <Card.Body>
+                    <Form.Group className="mb-3">
+                      <div className="d-flex align-items-center mb-3">
+                        <div className="icon-circle bg-blue-light me-3" style={{ width: 40, height: 40 }}>
+                          <BsKey className="text-primary" />
+                        </div>
+                        <div className="flex-grow-1">
+                          <div className="d-flex align-items-center justify-content-between">
+                            <Form.Label className="mb-0 fw-medium">Key Returned</Form.Label>
+                            <label className="ios-switch">
+                              <input
+                                type="checkbox"
+                                name="keyReturned"
+                                checked={formData.keyReturned}
+                                onChange={handleChange}
+                              />
+                              <span className="ios-switch-slider"></span>
+                            </label>
+                          </div>
+                          <small className="text-muted">Toggle when guest returns the room key</small>
+                        </div>
+                      </div>
+                      
+                      <div className="d-flex align-items-center">
+                        <div className="icon-circle bg-green-light me-3" style={{ width: 40, height: 40 }}>
+                          <BsCreditCard className="text-success" />
+                        </div>
+                        <div className="flex-grow-1">
+                          <div className="d-flex align-items-center justify-content-between">
+                            <Form.Label className="mb-0 fw-medium">Payment Completed</Form.Label>
+                            <label className="ios-switch">
+                              <input
+                                type="checkbox"
+                                name="paymentCompleted"
+                                checked={formData.paymentCompleted}
+                                onChange={handleChange}
+                              />
+                              <span className="ios-switch-slider"></span>
+                            </label>
+                          </div>
+                          <small className="text-muted">Toggle when payment is fully processed</small>
+                        </div>
+                      </div>
+                    </Form.Group>
+                  </Card.Body>
+                </Card>
               </Col>
             </Row>
 
